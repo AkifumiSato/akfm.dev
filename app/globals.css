@@ -8,7 +8,12 @@ body {
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
+}
+
+ul, ol {
+  list-style-type: disc;
+  list-style-position: inside;
 }
 
 * {
