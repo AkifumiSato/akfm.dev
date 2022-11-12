@@ -1,14 +1,11 @@
-import Link from 'next/link'
-import styles from './page.module.css'
+import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.contents}>
         <main className={styles.main}>
-          <h1 className={styles.title}>
-            # akfm.dev
-          </h1>
+          <h1 className={styles.title}># akfm.dev</h1>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>## Name</h2>
             <p>Akifumi Sato.</p>
@@ -47,5 +44,5 @@ export default function Home() {
         </footer>
       </div>
     </div>
-  )
+  );
 }
