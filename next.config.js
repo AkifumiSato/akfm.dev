@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    appDir: true,
+    scrollRestoration: true,
   },
-}
+  pageExtensions: ["page.tsx"],
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

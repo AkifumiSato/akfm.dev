@@ -1,8 +1,20 @@
 import matter from "gray-matter";
 import { marked } from "marked";
-import { parsePostsMarkdown } from "../../../../../src/lib/server/parsePostsMarkdown";
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
+import { parsePostsMarkdown } from "../../../../src/lib/server/parsePostsMarkdown";
+import { CustomNextPage } from "../../../page";
 import styles from "./page.module.css";
-import type { PageProps, Post } from "./type";
+
+type Post = {
+  year: string;
+  date: string;
+  slug: string;
+};
+
+type PageProps = {
+  content: string;
+  data: Record<string, unknown>;
+};
 
 function parsePost({ year, date, slug }: Post) {
   try {
@@ -12,13 +24,11 @@ function parsePost({ year, date, slug }: Post) {
       content: marked.parse(post.content),
     };
   } catch (e) {
-    throw new Error("not found page.");
+    throw new Error(`${year}/${date}/${slug}: not found markdown.`);
   }
 }
 
-export default async function Post({ params }: PageProps) {
-  const { content, data } = parsePost(params);
-
+const Post: CustomNextPage<PageProps> = ({ content, data }) => {
   return (
     <div className={styles.container}>
       <div className={styles.contents}>
@@ -50,4 +60,39 @@ export default async function Post({ params }: PageProps) {
       </div>
     </div>
   );
-}
+};
+
+Post.getTitle = (props) => ``;
+
+export const getStaticPaths: GetStaticPaths<Post> = async ({
+  params,
+}: GetStaticPropsContext) => {
+  return {
+    paths: [
+      {
+        params: {
+          year: "2022",
+          date: "1122",
+          slug: "hello-world",
+        },
+      },
+    ],
+    fallback: false, // can also be true or 'blocking'
+  };
+};
+
+export const getStaticProps: GetStaticProps<PageProps, Post> = async ({
+  params,
+}) => {
+  if (params === undefined) throw new Error("not found params.");
+  // todo mdxにするか検討
+  const { content, data } = parsePost(params);
+  return {
+    props: {
+      content,
+      data,
+    },
+  };
+};
+
+export default Post;

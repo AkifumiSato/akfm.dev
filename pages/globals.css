@@ -11,7 +11,8 @@ a {
   text-decoration: underline;
 }
 
-ul, ol {
+ul,
+ol {
   list-style-type: disc;
   list-style-position: inside;
 }
@@ -26,7 +27,7 @@ ul, ol {
   }
   body {
     color: white;
-    background: #0B0B0B;
+    background: #0b0b0b;
     line-height: 1.5;
   }
 }
