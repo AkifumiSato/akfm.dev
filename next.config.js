@@ -3,7 +3,7 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true,
   },
-  pageExtensions: ["page.tsx"],
-};
+  pageExtensions: ['page.tsx', 'page.ts'],
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
