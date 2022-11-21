@@ -6,7 +6,7 @@ import './reset.css'
 
 export default function MyApp({ Component, pageProps }: CustomApp) {
   const pageTitle = Component.getTitle?.(pageProps) ?? ''
-  const title = `akfm.dev${pageTitle ? ` ${pageTitle}` : ''}`
+  const title = `akfm.dev${pageTitle ? ` - ${pageTitle}` : ''}`
 
   return (
     <>

@@ -63,7 +63,7 @@ const Post: CustomNextPage<PageProps> = ({ content, data }) => {
   )
 }
 
-Post.getTitle = (props) => ``
+Post.getTitle = ({ data }) => `${data.title}`
 
 export const getStaticPaths: GetStaticPaths<Post> = async () => {
   const files = glob.sync('posts/[0-9]*/[0-9]*/*.md')
