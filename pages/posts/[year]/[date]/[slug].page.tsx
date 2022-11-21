@@ -1,30 +1,31 @@
-import matter from "gray-matter";
-import { marked } from "marked";
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
-import { parsePostsMarkdown } from "../../../../src/lib/server/parsePostsMarkdown";
-import { CustomNextPage } from "../../../page";
-import styles from "./page.module.css";
+import matter from 'gray-matter'
+import { glob } from 'glob'
+import { marked } from 'marked'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { parsePostsMarkdown } from '@/lib/server/parsePostsMarkdown'
+import { CustomNextPage } from '../../../page'
+import styles from './page.module.css'
 
 type Post = {
-  year: string;
-  date: string;
-  slug: string;
-};
+  year: string
+  date: string
+  slug: string
+}
 
 type PageProps = {
-  content: string;
-  data: Record<string, unknown>;
-};
+  content: string
+  data: Record<string, unknown>
+}
 
 function parsePost({ year, date, slug }: Post) {
   try {
-    const post = matter(parsePostsMarkdown(`${year}/${date}/${slug}`));
+    const post = matter(parsePostsMarkdown(`${year}/${date}/${slug}`))
     return {
       ...post,
       content: marked.parse(post.content),
-    };
+    }
   } catch (e) {
-    throw new Error(`${year}/${date}/${slug}: not found markdown.`);
+    throw new Error(`${year}/${date}/${slug}: not found markdown.`)
   }
 }
 
@@ -59,40 +60,45 @@ const Post: CustomNextPage<PageProps> = ({ content, data }) => {
         </footer>
       </div>
     </div>
-  );
-};
+  )
+}
 
-Post.getTitle = (props) => ``;
+Post.getTitle = (props) => ``
 
-export const getStaticPaths: GetStaticPaths<Post> = async ({
-  params,
-}: GetStaticPropsContext) => {
+export const getStaticPaths: GetStaticPaths<Post> = async () => {
+  const files = glob.sync('posts/[0-9]*/[0-9]*/*.md')
+
   return {
-    paths: [
-      {
-        params: {
-          year: "2022",
-          date: "1122",
-          slug: "hello-world",
-        },
-      },
-    ],
+    paths: files.map((file) => {
+      // glob的に必ずmatch
+      const [_post, year, date, slugMd] = file.split('/')
+      const slug = slugMd.replace('.md', '')
+      if (year && date && slug) {
+        return {
+          params: {
+            year,
+            date,
+            slug,
+          },
+        }
+      }
+      throw new Error('/[year]/[date]/[slug]形式である必要があります')
+    }),
     fallback: false, // can also be true or 'blocking'
-  };
-};
+  }
+}
 
 export const getStaticProps: GetStaticProps<PageProps, Post> = async ({
   params,
 }) => {
-  if (params === undefined) throw new Error("not found params.");
-  // todo mdxにするか検討
-  const { content, data } = parsePost(params);
+  if (params === undefined) throw new Error('not found params.')
+  const { content, data } = parsePost(params)
   return {
     props: {
       content,
       data,
     },
-  };
-};
+  }
+}
 
-export default Post;
+export default Post
