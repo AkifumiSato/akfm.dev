@@ -1,10 +1,12 @@
-import type { NextRequest as NextRequestOrg } from 'next/dist/server/web/spec-extension/request'
-import type { NextResponse as NextResponseOrg } from 'next/dist/server/web/spec-extension/response'
+class NextRequest {}
 
-const NextRequest = {} as NextRequestOrg
+class NextResponse {
+  // not compatible
+  constructor(public url: string | URL) {}
 
-const NextResponse = {
-  redirect: jest.fn((arg: unknown) => arg),
-} as any as NextResponseOrg
+  static redirect(url: string | URL) {
+    return new NextResponse(url)
+  }
+}
 
 export { NextRequest, NextResponse }

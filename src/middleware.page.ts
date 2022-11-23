@@ -10,8 +10,18 @@ function middlewarePage(request: NextRequest) {
     request.nextUrl.pathname.startsWith('/blog') &&
     request.nextUrl.pathname.endsWith('.html')
   ) {
-    // todo replace new URL
-    return NextResponse.redirect(new URL('/', request.url))
+    const [_blank, _blog, fullDate, slugWithHtml] =
+      request.nextUrl.pathname.split('/')
+    const [year, month, date] = fullDate.split('-')
+    const slug = slugWithHtml.replace('.html', '')
+    if ([year].some((v) => v === undefined))
+      throw new Error('blogのURLが不正です')
+    return NextResponse.redirect(
+      new URL(`/posts/${year}/${month}${date}/${slug}`, request.url)
+    )
+  }
+  if (['/blog/', '/blog/2'].includes(request.nextUrl.pathname)) {
+    return NextResponse.redirect(new URL('/posts', request.url))
   }
 }
 

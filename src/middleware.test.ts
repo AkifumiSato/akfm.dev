@@ -1,5 +1,5 @@
 import middlewarePage from '@/middleware.page'
-import { NextRequest } from 'next/server'
+import type { NextRequest } from 'next/server'
 
 const reqFactory = ({ pathname, url }: { pathname: string; url: string }) =>
   ({
@@ -17,7 +17,7 @@ describe('aboutのリダイレクト', () => {
         url: 'https://akfm.dev/about',
       })
     )
-    expect(res).toStrictEqual(new URL('https://akfm.dev/'))
+    expect(res?.url.toString()).toBe('https://akfm.dev/')
   })
 })
 
@@ -28,6 +28,17 @@ describe('古いURLのリダイレクト', () => {
       url: 'https://akfm.dev/blog/2020-12-13/akfm-dev-v2-release.html',
     })
     const res = middlewarePage(req)
-    expect(res).toStrictEqual(new URL('https://akfm.dev/'))
+    expect(res?.url.toString()).toBe(
+      'https://akfm.dev/posts/2020/1213/akfm-dev-v2-release'
+    )
+  })
+
+  test('/blog/', () => {
+    const req = reqFactory({
+      pathname: '/blog/',
+      url: 'https://akfm.dev/blog/',
+    })
+    const res = middlewarePage(req)
+    expect(res?.url.toString()).toBe('https://akfm.dev/posts')
   })
 })
