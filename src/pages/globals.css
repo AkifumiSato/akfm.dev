@@ -6,8 +6,22 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+/* todo: light theme toggle */
+:root {
+  --background-color: #0b0b0b;
+  --title-color: #e4e4e4;
+  --font-color: #c2c1c1;
+  --link-color: #9da2ff;
+}
+
+body {
+  color: var(--font-color);
+  background: var(--background-color);
+  line-height: 1.5;
+}
+
 a {
-  color: inherit;
+  color: var(--link-color);
   text-decoration: underline;
 }
 
@@ -19,15 +33,4 @@ ol {
 
 * {
   box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: #0b0b0b;
-    line-height: 1.5;
-  }
 }

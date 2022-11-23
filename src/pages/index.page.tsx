@@ -6,17 +6,17 @@ export default function Home() {
       <div className={styles.container}>
         <div className={styles.contents}>
           <main className={styles.main}>
-            <h1 className={styles.title}># akfm.dev</h1>
+            <h1 className={styles.title}>akfm.dev</h1>
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>## Name</h2>
+              <h2 className={styles.sectionTitle}>Name</h2>
               <p>Akifumi Sato.</p>
             </section>
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>## About</h2>
+              <h2 className={styles.sectionTitle}>About</h2>
               <p>Web application developer interested in Rust / Typescript.</p>
             </section>
             <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>## Links</h2>
+              <h2 className={styles.sectionTitle}>Links</h2>
               <ul>
                 <li>
                   <a href="https://github.com/AkifumiSato">github</a>
