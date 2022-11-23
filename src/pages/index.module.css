@@ -12,6 +12,13 @@
   width: 660px;
 }
 
+@media all and (max-width: 768px) {
+  .contents {
+    padding: 0 15px;
+    width: 100%;
+  }
+}
+
 .main {
   padding: 50px 0;
   display: flex;
