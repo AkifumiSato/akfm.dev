@@ -11,7 +11,6 @@ function middlewarePage(request: NextRequest) {
     request.nextUrl.pathname.endsWith('.html')
   ) {
     // todo replace new URL
-    console.log('request.nextUrl.pathname', request.nextUrl.pathname)
     return NextResponse.redirect(new URL('/', request.url))
   }
 }
