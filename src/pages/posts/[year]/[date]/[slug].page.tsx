@@ -1,9 +1,9 @@
+import { getAllPostsParams } from '@/lib/server/posts/getAllPostsParams'
 import matter from 'gray-matter'
-import { glob } from 'glob'
 import { marked } from 'marked'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { parsePostsMarkdown } from '@/lib/server/parsePostsMarkdown'
-import { CustomNextPage } from '../../../page'
+import { parseMarkdown } from '@/lib/server/posts/parseMarkdown'
+import { CustomNextPage } from '@/pages/page'
 import styles from './page.module.css'
 
 type Post = {
@@ -19,7 +19,7 @@ type PageProps = {
 
 function parsePost({ year, date, slug }: Post) {
   try {
-    const post = matter(parsePostsMarkdown(`${year}/${date}/${slug}`))
+    const post = matter(parseMarkdown(`${year}/${date}/${slug}`))
     return {
       ...post,
       content: marked.parse(post.content),
@@ -66,24 +66,8 @@ const Post: CustomNextPage<PageProps> = ({ content, data }) => {
 Post.getTitle = ({ data }) => `${data.title}`
 
 export const getStaticPaths: GetStaticPaths<Post> = async () => {
-  const files = glob.sync('posts/[0-9]*/[0-9]*/*.md')
-
   return {
-    paths: files.map((file) => {
-      // glob的に必ずmatch
-      const [_post, year, date, slugMd] = file.split('/')
-      const slug = slugMd.replace('.md', '')
-      if (year && date && slug) {
-        return {
-          params: {
-            year,
-            date,
-            slug,
-          },
-        }
-      }
-      throw new Error('/[year]/[date]/[slug]形式である必要があります')
-    }),
+    paths: getAllPostsParams(),
     fallback: false, // can also be true or 'blocking'
   }
 }

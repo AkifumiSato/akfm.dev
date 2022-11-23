@@ -9,14 +9,17 @@ body {
 /* todo: light theme toggle */
 :root {
   --background-color: #0b0b0b;
-  --title-color: #e4e4e4;
-  --font-color: #c2c1c1;
+  --title-color: #e8e8e8;
+  --font-color: #dedede;
+  --weak-font-color: #c2c1c1;
   --link-color: #9da2ff;
+  --base-font-size: 16px;
 }
 
 body {
   color: var(--font-color);
   background: var(--background-color);
+  font-size: var(--base-font-size);
   line-height: 1.5;
 }
 
