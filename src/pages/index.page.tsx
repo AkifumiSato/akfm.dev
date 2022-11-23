@@ -34,7 +34,7 @@ export default function Home() {
           <footer className={styles.footer}>
             <p className={styles.copyright}>
               ©︎akfm.dev 2022. Using&nbsp;
-              <a href="pages/index.page.tsx" target="_blank" rel="noreferrer">
+              <a href="@/pages/index.page.tsx" target="_blank" rel="noreferrer">
                 Google Analytics
               </a>
             </p>
