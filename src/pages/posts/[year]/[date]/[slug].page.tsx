@@ -19,12 +19,16 @@ type PageProps = {
   }
 }
 
+const renderer = new marked.Renderer()
+renderer.link = (href, title, text) =>
+  `<a href="${href}" title=${title} target="_blank">${text}</a>`
+
 function parsePost({ year, date, slug }: Post) {
   try {
     const post = matterMarkdown(`${year}/${date}/${slug}`)
     return {
       ...post,
-      content: marked.parse(post.content),
+      content: marked.parse(post.content, { renderer }),
     }
   } catch (e) {
     throw new Error(`${year}/${date}/${slug}: not found markdown.`)
