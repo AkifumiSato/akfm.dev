@@ -7,13 +7,3 @@
 .title {
   font-size: 30px;
 }
-
-.section {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-}
-
-.sectionTitle {
-  font-size: 25px;
-}

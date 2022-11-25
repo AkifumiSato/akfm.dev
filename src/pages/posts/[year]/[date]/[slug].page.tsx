@@ -1,3 +1,4 @@
+import { Section } from '@/components/Section'
 import { getAllPostsParams } from '@/lib/server/posts/getAllPostsParams'
 import { marked } from 'marked'
 import { GetStaticPaths, GetStaticProps } from 'next'
@@ -13,7 +14,9 @@ type Post = {
 
 type PageProps = {
   content: string
-  data: Record<string, unknown>
+  data: {
+    title: string
+  }
 }
 
 function parsePost({ year, date, slug }: Post) {
@@ -31,16 +34,8 @@ function parsePost({ year, date, slug }: Post) {
 const Post: CustomNextPage<PageProps> = ({ content, data }) => {
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}># akfm.dev</h1>
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>## date</h2>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: content,
-          }}
-        />
-        <div>{JSON.stringify(data)}</div>
-      </section>
+      <h1 className={styles.title}>{data.title}</h1>
+      <Section html={content} />
     </main>
   )
 }

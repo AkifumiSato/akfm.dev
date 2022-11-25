@@ -3,7 +3,7 @@ title: 'Hello, world'
 date: '2022/11/12'
 ---
 
-# Hello, world
+## Hello, world
 
 元々ひっそり個人ブログで技術ネタを書いてたけど,[zenn](https://zenn.dev)で書くようになってからブログは完全に寝たきりだったので、こちらは自分向けのメモを中心とすることにしました。
 
