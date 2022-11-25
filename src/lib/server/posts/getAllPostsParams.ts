@@ -1,6 +1,4 @@
-import * as fs from 'fs'
 import { glob } from 'glob'
-import * as path from 'path'
 
 export function getAllPostsParams() {
   const files = glob.sync('posts/[0-9]*/[0-9]*/*.md')

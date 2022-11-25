@@ -28,12 +28,6 @@ a {
   text-decoration: underline;
 }
 
-ul,
-ol {
-  list-style-type: disc;
-  list-style-position: inside;
-}
-
 * {
   box-sizing: border-box;
 }

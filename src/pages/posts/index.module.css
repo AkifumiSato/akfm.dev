@@ -11,3 +11,16 @@
   padding-bottom: 50px;
   border-bottom: 1px solid #484848;
 }
+
+.section {
+  color: var(--weak-font-color);
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.sectionTitle {
+  color: var(--title-color);
+  font-size: 25px;
+  font-weight: bold;
+}
