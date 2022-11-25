@@ -6,21 +6,6 @@
 
 .title {
   color: var(--title-color);
-  font-size: 40px;
-  font-weight: bold;
-  padding-bottom: 50px;
-  border-bottom: 1px solid #484848;
-}
-
-.section {
-  color: var(--weak-font-color);
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-}
-
-.sectionTitle {
-  color: var(--title-color);
-  font-size: 25px;
+  font-size: var(--title-font-size);
   font-weight: bold;
 }

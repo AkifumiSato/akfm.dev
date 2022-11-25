@@ -13,6 +13,8 @@ body {
   --font-color: #dedede;
   --weak-font-color: #c2c1c1;
   --link-color: #9da2ff;
+  --site-title-font-size: 50px;
+  --title-font-size: 40px;
   --base-font-size: 16px;
 }
 

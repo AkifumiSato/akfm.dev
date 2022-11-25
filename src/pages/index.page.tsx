@@ -1,8 +1,10 @@
 import { Section } from '@/components/Section'
+import { CustomNextPage } from '@/pages/page'
 import Link from 'next/link'
+import React from 'react'
 import styles from './index.module.css'
 
-export default function Home() {
+const Home: CustomNextPage = () => {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>akfm.dev</h1>
@@ -34,3 +36,5 @@ export default function Home() {
     </main>
   )
 }
+
+export default Home

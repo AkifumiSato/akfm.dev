@@ -1,8 +1,7 @@
 import { getAllPostsParams } from '@/lib/server/posts/getAllPostsParams'
-import matter from 'gray-matter'
 import { marked } from 'marked'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { parseMarkdown } from '@/lib/server/posts/parseMarkdown'
+import { matterMarkdown } from '@/lib/server/posts/matterMarkdown'
 import { CustomNextPage } from '@/pages/page'
 import styles from './page.module.css'
 
@@ -19,7 +18,7 @@ type PageProps = {
 
 function parsePost({ year, date, slug }: Post) {
   try {
-    const post = matter(parseMarkdown(`${year}/${date}/${slug}`))
+    const post = matterMarkdown(`${year}/${date}/${slug}`)
     return {
       ...post,
       content: marked.parse(post.content),
