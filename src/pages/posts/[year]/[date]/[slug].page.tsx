@@ -1,5 +1,5 @@
-import { Section } from '@/components/Section'
 import { getAllPostsParams } from '@/lib/server/posts/getAllPostsParams'
+import { Article } from '@/pages/posts/[year]/[date]/Article'
 import { marked } from 'marked'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { matterMarkdown } from '@/lib/server/posts/matterMarkdown'
@@ -39,7 +39,7 @@ const Post: CustomNextPage<PageProps> = ({ content, data }) => {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>{data.title}</h1>
-      <Section html={content} />
+      <Article html={content} />
     </main>
   )
 }
