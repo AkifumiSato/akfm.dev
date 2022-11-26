@@ -1,35 +1,21 @@
 import { getAllPostsParams } from '@/lib/server/posts/getAllPostsParams'
 import { matterMarkdown } from '@/lib/server/posts/matterMarkdown'
 import { CustomNextPage } from '@/pages/page'
+import PostList from '@/pages/posts/PostList'
+import { Post } from '@/pages/posts/type'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import React from 'react'
-import styles from './index.module.css'
+import styles from './common.module.css'
 
 type PageProps = {
-  posts: Array<{
-    title: string
-    path: string
-    date: string
-  }>
+  posts: Array<Post>
 }
 
-const PostsList: CustomNextPage<PageProps> = ({ posts }) => {
+const PostsPage: CustomNextPage<PageProps> = ({ posts }) => {
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}>Posts</h1>
-      <ul className={styles.list}>
-        {posts.map(({ title, path, date }) => (
-          <li key={path}>
-            <div className={styles.item}>
-              <time dateTime={date}>{date}</time>
-              <Link href={path} className={styles.postLink}>
-                {title}
-              </Link>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <PostList title="Posts" posts={posts} />
       <div className={styles.filter}>
         <h2>Other</h2>
         <Link href="/posts/archive" className={styles.archiveLink}>
@@ -40,9 +26,9 @@ const PostsList: CustomNextPage<PageProps> = ({ posts }) => {
   )
 }
 
-PostsList.getTitle = () => 'posts'
+PostsPage.getTitle = () => 'posts'
 
-export default PostsList
+export default PostsPage
 
 export const getStaticProps: GetStaticProps<PageProps> = (context) => {
   const allParams = getAllPostsParams()
