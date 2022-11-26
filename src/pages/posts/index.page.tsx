@@ -10,6 +10,7 @@ type PageProps = {
   posts: Array<{
     title: string
     path: string
+    date: string
   }>
 }
 
@@ -17,10 +18,15 @@ const PostsList: CustomNextPage<PageProps> = ({ posts }) => {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>Posts</h1>
-      <ul>
-        {posts.map(({ title, path }) => (
+      <ul className={styles.list}>
+        {posts.map(({ title, path, date }) => (
           <li key={path}>
-            <Link href={path}>{title}</Link>
+            <div className={styles.item}>
+              <time dateTime={date}>{date}</time>
+              <Link href={path} className={styles.postLink}>
+                {title}
+              </Link>
+            </div>
           </li>
         ))}
       </ul>
@@ -39,6 +45,7 @@ export const getStaticProps: GetStaticProps<PageProps> = (context) => {
     return {
       title,
       path: `/posts/${year}/${date}/${slug}`,
+      date: `${year}-${date.slice(0, 2)}-${date.slice(2, 4)}`,
     }
   })
   return {

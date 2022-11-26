@@ -9,5 +9,5 @@
   font-size: var(--site-title-font-size);
   font-weight: bold;
   padding-bottom: 50px;
-  border-bottom: 1px solid #484848;
+  border-bottom: 1px solid var(--border-color);
 }
