@@ -29,3 +29,17 @@
   font-size: var(--sub-title-font-size);
   width: fit-content;
 }
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.filter > h2 {
+  font-size: var(--sub-title-font-size);
+}
+
+.archiveLink {
+  color: var(--weak-font-color);
+}

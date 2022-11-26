@@ -5,6 +5,7 @@ import * as path from 'path'
 type Markdown = {
   data: {
     title: string
+    archive?: boolean
   }
 } & ReturnType<typeof matter>
 

@@ -30,17 +30,11 @@ const PostsList: CustomNextPage<PageProps> = ({ posts }) => {
           </li>
         ))}
       </ul>
-      <div className={styles.filter}>
-        <h2>Other</h2>
-        <Link href="/posts/archive" className={styles.archiveLink}>
-          archive posts
-        </Link>
-      </div>
     </main>
   )
 }
 
-PostsList.getTitle = () => 'posts'
+PostsList.getTitle = () => 'posts(archive)'
 
 export default PostsList
 
@@ -56,7 +50,7 @@ export const getStaticProps: GetStaticProps<PageProps> = (context) => {
         archive: archive ?? false,
       }
     })
-    .filter(({ archive }) => !archive)
+    .filter(({ archive }) => archive)
   return {
     props: {
       posts,

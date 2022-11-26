@@ -31,6 +31,9 @@ const Home: CustomNextPage = () => {
           <li>
             <Link href="/posts">posts</Link>
           </li>
+          <li>
+            <Link href="/posts/archive">posts(archive)</Link>
+          </li>
         </ul>
       </Section>
     </main>
