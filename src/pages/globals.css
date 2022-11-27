@@ -9,6 +9,7 @@ body {
 /* todo: light theme toggle */
 :root {
   --background-color: #0b0b0b;
+  --header-color: rgba(11, 11, 11, 0.75);
   --border-color: #484848;
   --title-color: #e8e8e8;
   --font-color: #dedede;
@@ -32,6 +33,12 @@ body {
 a {
   color: var(--link-color);
   text-decoration: underline;
+  transition-duration: 0.5s;
+  transition-property: opacity;
+}
+
+a:hover {
+  opacity: 0.7;
 }
 
 * {

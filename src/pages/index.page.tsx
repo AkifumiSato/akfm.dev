@@ -23,13 +23,27 @@ const Home: CustomNextPage = () => {
         <h2>Links</h2>
         <ul>
           <li>
-            <a href="https://github.com/AkifumiSato">github</a>
+            <a
+              href="https://github.com/AkifumiSato"
+              target="_blank"
+              rel="noreferrer"
+            >
+              github
+            </a>
           </li>
           <li>
-            <a href="https://zenn.dev/akfm">zenn.dev</a>
+            <a href="https://zenn.dev/akfm" target="_blank" rel="noreferrer">
+              zenn.dev
+            </a>
           </li>
           <li>
-            <a href="https://twitter.com/akfm_sato">twitter</a>
+            <a
+              href="https://twitter.com/akfm_sato"
+              target="_blank"
+              rel="noreferrer"
+            >
+              twitter
+            </a>
           </li>
           <li>
             <Link href="/posts">posts</Link>

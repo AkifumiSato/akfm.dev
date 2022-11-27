@@ -9,18 +9,30 @@ type Props = {
 
 export const BaseLayout: React.FC<Props> = ({ children, header = false }) => (
   <>
+    {header && (
+      <header className={styles.header}>
+        <div className={styles.headerInner}>
+          <Link href="/" className={styles.logoLink}>
+            akfm.dev
+          </Link>
+          <ul className={styles.headerMenu}>
+            <li>
+              <Link href="/" className={styles.headerMenuLink}>
+                about
+              </Link>
+            </li>
+            <li>
+              <Link href="/posts" className={styles.headerMenuLink}>
+                posts
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </header>
+    )}
     <div className={styles.outer}>
       <div className={styles.container}>
-        <div className={styles.inner}>
-          {header && (
-            <header className={styles.header}>
-              <Link href="/" className={styles.logoLink}>
-                akfm.dev
-              </Link>
-            </header>
-          )}
-          {children}
-        </div>
+        <div className={styles.inner}>{children}</div>
         <footer className={styles.footer}>
           <p className={styles.copyright}>
             ©︎akfm.dev 2022. Using&nbsp;
