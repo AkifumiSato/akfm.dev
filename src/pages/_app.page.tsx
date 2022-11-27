@@ -1,9 +1,12 @@
 import { BaseLayout } from '@/components/BaseLayout'
 import Head from 'next/head'
+import Script from 'next/script'
 import React from 'react'
 import { CustomApp } from './page'
 import './reset.css'
 import './globals.css'
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || ''
 
 export default function MyApp({ Component, pageProps }: CustomApp) {
   const pageTitle = Component.getTitle?.(pageProps) ?? ''
@@ -20,6 +23,18 @@ export default function MyApp({ Component, pageProps }: CustomApp) {
         <link rel="icon" href="/public/favicon.svg" />
       </Head>
       <Component {...pageProps} />
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GA_ID}');
+        `}
+      </Script>
     </>
   )
 }
