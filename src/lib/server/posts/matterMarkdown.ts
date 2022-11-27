@@ -2,12 +2,14 @@ import * as fs from 'fs'
 import matter from 'gray-matter'
 import * as path from 'path'
 
-type Markdown = {
+export type MarkdownMera = {
   data: {
     title: string
     archive?: boolean
   }
-} & ReturnType<typeof matter>
+}
+
+type Markdown = MarkdownMera & ReturnType<typeof matter>
 
 function checkRequiredProperty(matterResult: {
   data: Record<string, unknown>

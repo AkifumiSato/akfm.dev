@@ -2,7 +2,7 @@ import { getAllPostsParams } from '@/lib/server/posts/getAllPostsParams'
 import { Article } from '@/pages/posts/[year]/[date]/Article'
 import { marked } from 'marked'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { matterMarkdown } from '@/lib/server/posts/matterMarkdown'
+import { MarkdownMera, matterMarkdown } from '@/lib/server/posts/matterMarkdown'
 import { CustomNextPage } from '@/pages/page'
 import styles from './page.module.css'
 
@@ -14,10 +14,7 @@ type Post = {
 
 type PageProps = {
   content: string
-  data: {
-    title: string
-  }
-}
+} & MarkdownMera
 
 const renderer = new marked.Renderer()
 renderer.link = (href, title, text) =>
@@ -39,6 +36,11 @@ const Post: CustomNextPage<PageProps> = ({ content, data }) => {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>{data.title}</h1>
+      {data.archive && (
+        <div className={styles.archive}>
+          この記事はArchiveされているため、情報が更新されていない可能性があります。
+        </div>
+      )}
       <Article html={content} />
     </main>
   )

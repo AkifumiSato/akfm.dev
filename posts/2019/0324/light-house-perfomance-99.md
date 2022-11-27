@@ -1,5 +1,5 @@
 ---
-title: 'Light Houseでperfomanceを99にした話'
+title: 'Light Houseでperformanceを99にした話'
 archive: true
 ---
 
