@@ -31,10 +31,14 @@
 }
 
 .logoLink {
-  color: var(--base-font-size);
+  background: var(--logo-blue);
+  background: var(--logo-gradation);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-decoration: none;
   font-size: var(--sub-title-font-size);
   font-weight: bold;
+  width: fit-content;
 }
 
 .footer {

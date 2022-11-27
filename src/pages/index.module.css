@@ -4,10 +4,17 @@
   row-gap: 50px;
 }
 
-.title {
-  color: var(--title-color);
-  font-size: var(--site-title-font-size);
-  font-weight: bold;
+.header {
   padding: 50px 0;
   border-bottom: 1px solid var(--border-color);
+}
+
+.title {
+  background: var(--logo-blue);
+  background: var(--logo-gradation);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: var(--site-title-font-size);
+  font-weight: bold;
+  width: fit-content;
 }

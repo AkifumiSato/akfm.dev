@@ -8,7 +8,9 @@ import styles from './index.module.css'
 const Home: CustomNextPage = () => {
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}>akfm.dev</h1>
+      <div className={styles.header}>
+        <h1 className={styles.title}>akfm.dev</h1>
+      </div>
       <Section>
         <h2>Name</h2>
         <p>Akifumi Sato.</p>
