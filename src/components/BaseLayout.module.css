@@ -36,3 +36,14 @@
   font-size: var(--sub-title-font-size);
   font-weight: bold;
 }
+
+.footer {
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+
+.copyright {
+  color: #adadad;
+  font-size: 14px;
+}

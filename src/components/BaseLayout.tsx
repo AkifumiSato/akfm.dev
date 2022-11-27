@@ -1,4 +1,3 @@
-import { Footer } from '@/components/Footer'
 import Link from 'next/link'
 import styles from './BaseLayout.module.css'
 import React, { ReactElement } from 'react'
@@ -22,7 +21,18 @@ export const BaseLayout: React.FC<Props> = ({ children, header = false }) => (
           )}
           {children}
         </div>
-        <Footer />
+        <footer className={styles.footer}>
+          <p className={styles.copyright}>
+            ©︎akfm.dev 2022. Using&nbsp;
+            <a
+              href="https://www.google.com/intl/ja/policies/privacy/partners/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Google Analytics
+            </a>
+          </p>
+        </footer>
       </div>
     </div>
   </>

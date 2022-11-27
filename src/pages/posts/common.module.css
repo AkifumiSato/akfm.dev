@@ -16,4 +16,5 @@
 
 .archiveLink {
   color: var(--weak-font-color);
+  width: fit-content;
 }
