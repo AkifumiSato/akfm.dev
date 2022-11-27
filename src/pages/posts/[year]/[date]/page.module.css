@@ -12,6 +12,16 @@
   font-weight: bold;
 }
 
+.header {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.date {
+  color: var(--weak-font-color);
+}
+
 .title {
   font-size: 30px;
   font-weight: bold;

@@ -4,6 +4,7 @@ import { marked } from 'marked'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { MarkdownMera, matterMarkdown } from '@/lib/server/posts/matterMarkdown'
 import { CustomNextPage } from '@/pages/page'
+import React from 'react'
 import styles from './page.module.css'
 
 type Post = {
@@ -14,6 +15,7 @@ type Post = {
 
 type PageProps = {
   content: string
+  params: Post
 } & MarkdownMera
 
 const renderer = new marked.Renderer()
@@ -32,10 +34,17 @@ function parsePost({ year, date, slug }: Post) {
   }
 }
 
-const Post: CustomNextPage<PageProps> = ({ content, data }) => {
+const Post: CustomNextPage<PageProps> = ({ content, data, params }) => {
+  const { year, date } = params
+  const dateTime = `${year}-${date.slice(0, 2)}-${date.slice(2, 4)}`
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}>{data.title}</h1>
+      <div className={styles.header}>
+        <time dateTime={dateTime} className={styles.date}>
+          {dateTime}
+        </time>
+        <h1 className={styles.title}>{data.title}</h1>
+      </div>
       {data.archive && (
         <div className={styles.archive}>
           この記事はArchiveされているため、情報が更新されていない可能性があります。
@@ -64,6 +73,7 @@ export const getStaticProps: GetStaticProps<PageProps, Post> = async ({
     props: {
       content,
       data,
+      params,
     },
   }
 }
