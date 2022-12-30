@@ -1,5 +1,5 @@
 # TODO
 
-- [ ] 過去記事を追加
-- [ ] deploy
+- [ ] favicon
+- [ ] google analytics
 - [ ] pager の実装
