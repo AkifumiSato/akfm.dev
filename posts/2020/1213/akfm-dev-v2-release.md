@@ -1,5 +1,5 @@
 ---
-title: 'ElmでTodoアプリを作ってみる（２）'
+title: 'akfm.dev@v2 release'
 archive: true
 ---
 
