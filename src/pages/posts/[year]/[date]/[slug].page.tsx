@@ -7,6 +7,7 @@ import React from 'react'
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
+import rehypeExternalLinks from 'rehype-external-links'
 import shiki from 'shiki'
 import withShiki from '@stefanprobst/rehype-shiki'
 import rehypeStringify from 'rehype-stringify'
@@ -31,6 +32,7 @@ async function parsePost({ year, date, slug }: Post) {
       .use(remarkParse)
       .use(remarkRehype)
       .use(withShiki, { highlighter })
+      .use(rehypeExternalLinks, { target: '_blank' })
       .use(rehypeStringify)
       .process(post.content)
 
