@@ -26,7 +26,7 @@
 }
 
 .postLink {
-  font-size: var(--sub-title-font-size);
+  font-size: var(--small-title-font-size);
   width: fit-content;
 }
 
