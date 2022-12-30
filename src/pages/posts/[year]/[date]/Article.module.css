@@ -4,12 +4,24 @@
 
 .article > h2 {
   color: var(--title-color);
-  font-size: 25px;
+  font-size: var(--sub-title-font-size);
   font-weight: bold;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
 }
 
-.article > h2:not(:first-of-type) {
+.article > h2:not(:first-child) {
   margin-top: 20px;
+}
+
+.article > h3:not(:first-child) {
+  margin-top: 10px;
+}
+
+.article > h3 {
+  color: var(--title-color);
+  font-size: var(--small-title-font-size);
+  font-weight: bold;
 }
 
 .article > *:not(h2, h3) {
