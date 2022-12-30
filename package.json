@@ -12,19 +12,24 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@stefanprobst/rehype-shiki": "^2.2.0",
     "glob": "8.0.3",
     "gray-matter": "4.0.3",
-    "marked": "4.2.2",
     "next": "13.0.3",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "rehype-shiki": "^0.0.9",
+    "rehype-stringify": "^9.0.3",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
+    "shiki": "^0.12.1",
+    "unified": "^10.1.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
     "@types/glob": "8.0.0",
     "@types/jest": "29.2.3",
-    "@types/marked": "4.0.7",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
