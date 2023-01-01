@@ -1,4 +1,5 @@
 import { BaseLayout } from '@/components/BaseLayout'
+import { Analytics } from '@vercel/analytics/react'
 import Head from 'next/head'
 import Script from 'next/script'
 import React from 'react'
@@ -23,6 +24,7 @@ export default function MyApp({ Component, pageProps }: CustomApp) {
         <link rel="icon" href="/public/favicon.svg" />
       </Head>
       <Component {...pageProps} />
+      <Analytics />
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
         strategy="afterInteractive"
