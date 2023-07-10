@@ -1,8 +1,9 @@
-import { BaseLayout } from '@/components/BaseLayout'
+import styles from './Layout.module.css'
 import Head from 'next/head'
 import Script from 'next/script'
 import React from 'react'
 import { Analytics } from '@vercel/analytics/react'
+import './reset.css'
 import './globals.css'
 
 export const metadata = {
@@ -24,7 +25,23 @@ export default function RootLayout({
         <link rel="icon" href="/public/favicon.svg" />
       </Head>
       <body>
-        <BaseLayout header>{children}</BaseLayout>
+        <div className={styles.outer}>
+          <div className={styles.container}>
+            <div className={styles.inner}>{children}</div>
+            <footer className={styles.footer}>
+              <p className={styles.copyright}>
+                ©︎akfm.dev 2022. Using&nbsp;
+                <a
+                  href="https://www.google.com/intl/ja/policies/privacy/partners/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Google Analytics
+                </a>
+              </p>
+            </footer>
+          </div>
+        </div>
         <Analytics />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}

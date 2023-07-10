@@ -1,10 +1,9 @@
 import { Section } from '@/components/Section'
-import { CustomNextPage } from '@/pages/page'
 import Link from 'next/link'
 import React from 'react'
 import styles from './index.module.css'
 
-const Home: CustomNextPage = () => {
+const Page = () => {
   return (
     <main className={styles.main}>
       <div className={styles.header}>
@@ -56,4 +55,4 @@ const Home: CustomNextPage = () => {
   )
 }
 
-export default Home
+export default Page

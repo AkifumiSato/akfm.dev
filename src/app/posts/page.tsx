@@ -1,18 +1,16 @@
 import { getAllPostsParams } from '@/lib/server/posts/getAllPostsParams'
 import { matterMarkdown } from '@/lib/server/posts/matterMarkdown'
-import { CustomNextPage } from '@/pages/page'
 import PostList from '@/pages/posts/PostList'
-import { Post } from '@/pages/posts/type'
-import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import React from 'react'
 import styles from './common.module.css'
 
-type PageProps = {
-  posts: Array<Post>
+export const metadata = {
+  title: 'posts - akfm.dev',
 }
 
-const PostsPage: CustomNextPage<PageProps> = ({ posts }) => {
+async function PostsPage() {
+  const posts = readAllPosts()
   return (
     <main className={styles.main}>
       <PostList title="Posts" posts={posts} />
@@ -26,13 +24,11 @@ const PostsPage: CustomNextPage<PageProps> = ({ posts }) => {
   )
 }
 
-PostsPage.getTitle = () => 'posts'
-
 export default PostsPage
 
-export const getStaticProps: GetStaticProps<PageProps> = (context) => {
+const readAllPosts = () => {
   const allParams = getAllPostsParams()
-  const posts = allParams
+  return allParams
     .map(({ params: { year, date, slug } }) => {
       const { title, archive } = matterMarkdown(`${year}/${date}/${slug}`).data
       return {
@@ -43,9 +39,4 @@ export const getStaticProps: GetStaticProps<PageProps> = (context) => {
       }
     })
     .filter(({ archive }) => !archive)
-  return {
-    props: {
-      posts,
-    },
-  }
 }
