@@ -13,10 +13,10 @@
   },
   "dependencies": {
     "@stefanprobst/rehype-shiki": "2.2.0",
-    "@vercel/analytics": "0.1.6",
+    "@vercel/analytics": "1.0.1",
     "glob": "8.0.3",
     "gray-matter": "4.0.3",
-    "next": "13.0.3",
+    "next": "13.4.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rehype-external-links": "2.0.1",

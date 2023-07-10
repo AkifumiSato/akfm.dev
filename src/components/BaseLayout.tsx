@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import styles from './BaseLayout.module.css'
-import React, { ReactElement } from 'react'
+import React from 'react'
 
 type Props = {
-  children: ReactElement
+  children: React.ReactNode
   header?: boolean
 }
 
