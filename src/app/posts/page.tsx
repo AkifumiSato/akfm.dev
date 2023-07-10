@@ -1,6 +1,6 @@
 import { getAllPostsParams } from '@/lib/server/posts/getAllPostsParams'
 import { matterMarkdown } from '@/lib/server/posts/matterMarkdown'
-import PostList from '@/pages/posts/PostList'
+import PostList from './PostList'
 import Link from 'next/link'
 import React from 'react'
 import styles from './common.module.css'
