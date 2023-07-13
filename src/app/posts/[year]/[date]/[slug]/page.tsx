@@ -1,8 +1,7 @@
 import { getAllPostsParams } from '@/lib/server/posts/getAllPostsParams'
-import { Article } from '@/pages/posts/[year]/[date]/Article'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { Article } from './Article'
+import { Metadata } from 'next'
 import { MarkdownMera, matterMarkdown } from '@/lib/server/posts/matterMarkdown'
-import { CustomNextPage } from '@/pages/page'
 import React from 'react'
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
@@ -45,7 +44,8 @@ async function parsePost({ year, date, slug }: Post) {
   }
 }
 
-const Post: CustomNextPage<PageProps> = ({ content, data, params }) => {
+export default async function PostPage({ params }: { params: Post }) {
+  const { content, data } = await parsePost(params)
   const { year, date } = params
   const dateTime = `${year}-${date.slice(0, 2)}-${date.slice(2, 4)}`
   return (
@@ -66,27 +66,17 @@ const Post: CustomNextPage<PageProps> = ({ content, data, params }) => {
   )
 }
 
-Post.getTitle = ({ data }) => `${data.title}`
-
-export const getStaticPaths: GetStaticPaths<Post> = async () => {
-  return {
-    paths: getAllPostsParams(),
-    fallback: false, // can also be true or 'blocking'
-  }
-}
-
-export const getStaticProps: GetStaticProps<PageProps, Post> = async ({
+export async function generateMetadata({
   params,
-}) => {
-  if (params === undefined) throw new Error('not found params.')
-  const { content, data } = await parsePost(params)
+}: {
+  params: Post
+}): Promise<Metadata> {
+  const { data } = await parsePost(params)
   return {
-    props: {
-      content,
-      data,
-      params,
-    },
+    title: `${data.title} - akfm.dev`,
   }
 }
 
-export default Post
+export function generateStaticParams() {
+  return getAllPostsParams()
+}
