@@ -1,17 +1,15 @@
 import { getAllPostsParams } from '@/lib/server/posts/getAllPostsParams'
 import { matterMarkdown } from '@/lib/server/posts/matterMarkdown'
-import { CustomNextPage } from '@/pages/page'
-import { Post } from './type'
-import PostList from './PostList'
-import { GetStaticProps } from 'next'
+import PostList from '../PostList'
 import React from 'react'
-import styles from './common.module.css'
+import styles from '../common.module.css'
 
-type PageProps = {
-  posts: Array<Post>
+export const metadata = {
+  title: 'posts(archive) - akfm.dev',
 }
 
-const PostsPage: CustomNextPage<PageProps> = ({ posts }) => {
+export default function PostsPage() {
+  const posts = readAllPosts()
   return (
     <main className={styles.main}>
       <PostList title="Posts - Archive" posts={posts} />
@@ -19,14 +17,10 @@ const PostsPage: CustomNextPage<PageProps> = ({ posts }) => {
   )
 }
 
-PostsPage.getTitle = () => 'posts(archive)'
-
-export default PostsPage
-
-export const getStaticProps: GetStaticProps<PageProps> = (context) => {
+const readAllPosts = () => {
   const allParams = getAllPostsParams()
-  const posts = allParams
-    .map(({ params: { year, date, slug } }) => {
+  return allParams
+    .map(({ year, date, slug }) => {
       const { title, archive } = matterMarkdown(`${year}/${date}/${slug}`).data
       return {
         title,
@@ -36,9 +30,4 @@ export const getStaticProps: GetStaticProps<PageProps> = (context) => {
       }
     })
     .filter(({ archive }) => archive)
-  return {
-    props: {
-      posts,
-    },
-  }
 }

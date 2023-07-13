@@ -1,7 +1,12 @@
-import { Post } from './type'
 import Link from 'next/link'
 import React from 'react'
 import styles from './PostList.module.css'
+
+type Post = {
+  title: string
+  path: string
+  date: string
+}
 
 type PageProps = {
   title: string

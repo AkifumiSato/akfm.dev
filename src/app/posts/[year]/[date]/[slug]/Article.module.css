@@ -11,11 +11,11 @@
 }
 
 .article > h2:not(:first-child) {
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .article > h3:not(:first-child) {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .article > h3 {

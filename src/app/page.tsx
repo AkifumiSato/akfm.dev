@@ -1,11 +1,9 @@
-import { BaseLayout } from '@/components/BaseLayout'
 import { Section } from '@/components/Section'
-import { CustomNextPage } from '@/pages/page'
 import Link from 'next/link'
 import React from 'react'
 import styles from './index.module.css'
 
-const Home: CustomNextPage = () => {
+const Page = () => {
   return (
     <main className={styles.main}>
       <div className={styles.header}>
@@ -57,6 +55,4 @@ const Home: CustomNextPage = () => {
   )
 }
 
-Home.getLayout = (page) => <BaseLayout>{page}</BaseLayout>
-
-export default Home
+export default Page
