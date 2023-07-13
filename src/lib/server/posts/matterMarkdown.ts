@@ -1,6 +1,7 @@
 import * as fs from 'fs'
 import matter from 'gray-matter'
 import * as path from 'path'
+import * as process from 'process'
 
 export type MarkdownMera = {
   data: {
@@ -21,7 +22,7 @@ function checkRequiredProperty(matterResult: {
 }
 
 export function matterMarkdown(postPath: string): Markdown {
-  const targetPath = path.resolve(`posts/${postPath}.md`)
+  const targetPath = path.join(process.cwd(), `posts/${postPath}.md`)
   const file = fs.readFileSync(targetPath, 'utf-8')
   const result = matter(file)
   if (checkRequiredProperty(result)) {
