@@ -20,7 +20,7 @@ export default function PostsPage() {
 const readAllPosts = () => {
   const allParams = getAllPostsParams()
   return allParams
-    .map(({ params: { year, date, slug } }) => {
+    .map(({ year, date, slug }) => {
       const { title, archive } = matterMarkdown(`${year}/${date}/${slug}`).data
       return {
         title,

@@ -9,18 +9,16 @@ export function getAllPostsParams() {
       const slug = slugMd.replace('.md', '')
       if (year && date && slug) {
         return {
-          params: {
-            year,
-            date,
-            slug,
-          },
+          year,
+          date,
+          slug,
         }
       }
       throw new Error('/[year]/[date]/[slug]形式である必要があります')
     })
     .sort((prev, next) => {
-      const prevFullDate = `${prev.params.year}${prev.params.date}`
-      const nextFullDate = `${next.params.year}${next.params.date}`
+      const prevFullDate = `${prev.year}${prev.date}`
+      const nextFullDate = `${next.year}${next.date}`
       return nextFullDate > prevFullDate ? 1 : -1
     })
 }
