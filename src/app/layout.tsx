@@ -3,7 +3,6 @@ import Head from 'next/head'
 import Script from 'next/script'
 import React from 'react'
 import { Analytics } from '@vercel/analytics/react'
-import './reset.css'
 import './globals.css'
 
 export const metadata = {
