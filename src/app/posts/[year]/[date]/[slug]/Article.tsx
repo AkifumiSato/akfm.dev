@@ -1,9 +1,9 @@
-import styles from './Article.module.css'
-import React from 'react'
+import type React from "react";
+import styles from "./Article.module.css";
 
 type Props = {
-  html: string
-}
+  html: string;
+};
 
 export const Article: React.FC<Props> = ({ html }) => (
   <article
@@ -12,4 +12,4 @@ export const Article: React.FC<Props> = ({ html }) => (
       __html: html,
     }}
   />
-)
+);

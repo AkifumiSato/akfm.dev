@@ -1,11 +1,11 @@
-import Link from 'next/link'
-import styles from './BaseLayout.module.css'
-import React from 'react'
+import Link from "next/link";
+import type React from "react";
+import styles from "./BaseLayout.module.css";
 
 type Props = {
-  children: React.ReactNode
-  header?: boolean
-}
+  children: React.ReactNode;
+  header?: boolean;
+};
 
 export const BaseLayout: React.FC<Props> = ({ children, header = false }) => (
   <>
@@ -48,4 +48,4 @@ export const BaseLayout: React.FC<Props> = ({ children, header = false }) => (
       </div>
     </div>
   </>
-)
+);

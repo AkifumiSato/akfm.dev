@@ -1,53 +1,56 @@
-import { getAllPostsParams } from '@/lib/server/posts/getAllPostsParams'
-import { Article } from './Article'
-import { Metadata } from 'next'
-import { MarkdownMera, matterMarkdown } from '@/lib/server/posts/matterMarkdown'
-import React from 'react'
-import { unified } from 'unified'
-import remarkParse from 'remark-parse'
-import remarkRehype from 'remark-rehype'
-import rehypeExternalLinks from 'rehype-external-links'
-import shiki from 'shiki'
-import withShiki from '@stefanprobst/rehype-shiki'
-import rehypeStringify from 'rehype-stringify'
-import styles from './page.module.css'
+import { getAllPostsParams } from "@/lib/server/posts/getAllPostsParams";
+import {
+  type MarkdownMera,
+  matterMarkdown,
+} from "@/lib/server/posts/matterMarkdown";
+import withShiki from "@stefanprobst/rehype-shiki";
+import type { Metadata } from "next";
+import React from "react";
+import rehypeExternalLinks from "rehype-external-links";
+import rehypeStringify from "rehype-stringify";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import shiki from "shiki";
+import { unified } from "unified";
+import { Article } from "./Article";
+import styles from "./page.module.css";
 
 type Post = {
-  year: string
-  date: string
-  slug: string
-}
+  year: string;
+  date: string;
+  slug: string;
+};
 
 type PageProps = {
-  content: string
-  params: Post
-} & MarkdownMera
+  content: string;
+  params: Post;
+} & MarkdownMera;
 
 async function parsePost({ year, date, slug }: Post) {
   try {
-    const post = matterMarkdown(`${year}/${date}/${slug}`)
-    const highlighter = await shiki.getHighlighter({ theme: 'github-dark' })
+    const post = matterMarkdown(`${year}/${date}/${slug}`);
+    const highlighter = await shiki.getHighlighter({ theme: "github-dark" });
     const file = await unified()
       .use(remarkParse)
       .use(remarkRehype)
       .use(withShiki, { highlighter })
-      .use(rehypeExternalLinks, { target: '_blank' })
+      .use(rehypeExternalLinks, { target: "_blank" })
       .use(rehypeStringify)
-      .process(post.content)
+      .process(post.content);
 
     return {
       ...post,
       content: String(file),
-    }
+    };
   } catch (e) {
-    throw new Error(`${year}/${date}/${slug}: not found markdown.`)
+    throw new Error(`${year}/${date}/${slug}: not found markdown.`);
   }
 }
 
 export default async function PostPage({ params }: { params: Post }) {
-  const { content, data } = await parsePost(params)
-  const { year, date } = params
-  const dateTime = `${year}-${date.slice(0, 2)}-${date.slice(2, 4)}`
+  const { content, data } = await parsePost(params);
+  const { year, date } = params;
+  const dateTime = `${year}-${date.slice(0, 2)}-${date.slice(2, 4)}`;
   return (
     <main className={styles.main}>
       <div className={styles.header}>
@@ -63,20 +66,20 @@ export default async function PostPage({ params }: { params: Post }) {
       )}
       <Article html={content} />
     </main>
-  )
+  );
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Post
+  params: Post;
 }): Promise<Metadata> {
-  const { data } = await parsePost(params)
+  const { data } = await parsePost(params);
   return {
     title: `${data.title} - akfm.dev`,
-  }
+  };
 }
 
 export function generateStaticParams() {
-  return getAllPostsParams()
+  return getAllPostsParams();
 }

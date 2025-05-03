@@ -1,20 +1,20 @@
-import styles from './Layout.module.css'
-import Head from 'next/head'
-import Script from 'next/script'
-import React from 'react'
-import { Analytics } from '@vercel/analytics/react'
-import './globals.css'
+import { Analytics } from "@vercel/analytics/react";
+import Head from "next/head";
+import Script from "next/script";
+import type React from "react";
+import styles from "./Layout.module.css";
+import "./globals.css";
 
 export const metadata = {
-  title: 'akfm.dev',
-}
+  title: "akfm.dev",
+};
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID || ''
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="ja">
@@ -56,5 +56,5 @@ export default function RootLayout({
         </Script>
       </body>
     </html>
-  )
+  );
 }

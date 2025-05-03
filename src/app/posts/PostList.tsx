@@ -1,17 +1,17 @@
-import Link from 'next/link'
-import React from 'react'
-import styles from './PostList.module.css'
+import Link from "next/link";
+import type React from "react";
+import styles from "./PostList.module.css";
 
 type Post = {
-  title: string
-  path: string
-  date: string
-}
+  title: string;
+  path: string;
+  date: string;
+};
 
 type PageProps = {
-  title: string
-  posts: Array<Post>
-}
+  title: string;
+  posts: Array<Post>;
+};
 
 const PostList: React.FC<PageProps> = ({ title, posts }) => {
   return (
@@ -30,7 +30,7 @@ const PostList: React.FC<PageProps> = ({ title, posts }) => {
         ))}
       </ul>
     </article>
-  )
-}
+  );
+};
 
-export default PostList
+export default PostList;

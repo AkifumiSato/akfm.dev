@@ -5,8 +5,8 @@ class NextResponse {
   constructor(public url: string | URL) {}
 
   static redirect(url: string | URL) {
-    return new NextResponse(url)
+    return new NextResponse(url);
   }
 }
 
-export { NextRequest, NextResponse }
+export { NextRequest, NextResponse };

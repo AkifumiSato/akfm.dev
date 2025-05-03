@@ -1,7 +1,7 @@
-import { Section } from '@/components/Section'
-import Link from 'next/link'
-import React from 'react'
-import styles from './index.module.css'
+import { Section } from "@/components/Section";
+import Link from "next/link";
+import React from "react";
+import styles from "./index.module.css";
 
 const Page = () => {
   return (
@@ -35,24 +35,17 @@ const Page = () => {
             </a>
           </li>
           <li>
-            <a
-              href="https://twitter.com/akfm_sato"
-              target="_blank"
-              rel="noreferrer"
-            >
-              twitter
+            <a href="https://x.com/akfm_sato" target="_blank" rel="noreferrer">
+              X
             </a>
           </li>
           <li>
             <Link href="/posts">posts</Link>
           </li>
-          <li>
-            <Link href="/posts/archive">posts(archive)</Link>
-          </li>
         </ul>
       </Section>
     </main>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

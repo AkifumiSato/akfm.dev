@@ -1,10 +1,10 @@
-import Link from 'next/link'
-import styles from './Layout.module.css'
-import React from 'react'
+import Link from "next/link";
+import type React from "react";
+import styles from "./Layout.module.css";
 
 type Props = {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 export default function Layout({ children }: Props) {
   return (
@@ -30,5 +30,5 @@ export default function Layout({ children }: Props) {
       </header>
       <div className={styles.container}>{children}</div>
     </>
-  )
+  );
 }
