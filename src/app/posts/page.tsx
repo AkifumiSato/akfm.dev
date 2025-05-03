@@ -1,8 +1,8 @@
-import { getAllPostsParams } from "@/lib/server/posts/getAllPostsParams";
-import { matterMarkdown } from "@/lib/server/posts/matterMarkdown";
+import { getAllPostsParams } from "@/lib/server/posts/get-all-posts-params";
+import { matterMarkdown } from "@/lib/server/posts/matter-markdown";
 import React from "react";
-import PostList from "./PostList";
 import styles from "./common.module.css";
+import PostList from "./post-list";
 
 export const metadata = {
   title: "posts - akfm.dev",

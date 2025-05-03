@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type React from "react";
-import styles from "./PostList.module.css";
+import styles from "./post-list.module.css";
 
 type Post = {
   title: string;

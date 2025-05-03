@@ -2,7 +2,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Head from "next/head";
 import Script from "next/script";
 import type React from "react";
-import styles from "./Layout.module.css";
+import styles from "./layout.module.css";
 import "./globals.css";
 
 export const metadata = {

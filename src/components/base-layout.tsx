@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type React from "react";
-import styles from "./BaseLayout.module.css";
+import styles from "./base-layout.module.css";
 
 type Props = {
   children: React.ReactNode;

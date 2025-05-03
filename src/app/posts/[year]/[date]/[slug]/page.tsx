@@ -1,8 +1,8 @@
-import { getAllPostsParams } from "@/lib/server/posts/getAllPostsParams";
+import { getAllPostsParams } from "@/lib/server/posts/get-all-posts-params";
 import {
   type MarkdownMera,
   matterMarkdown,
-} from "@/lib/server/posts/matterMarkdown";
+} from "@/lib/server/posts/matter-markdown";
 import withShiki from "@stefanprobst/rehype-shiki";
 import type { Metadata } from "next";
 import React from "react";
@@ -12,7 +12,7 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import shiki from "shiki";
 import { unified } from "unified";
-import { Article } from "./Article";
+import { Article } from "./article";
 import styles from "./page.module.css";
 
 type Post = {

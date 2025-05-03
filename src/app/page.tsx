@@ -1,4 +1,4 @@
-import { Section } from "@/components/Section";
+import { Section } from "@/components/section";
 import Link from "next/link";
 import React from "react";
 import styles from "./index.module.css";

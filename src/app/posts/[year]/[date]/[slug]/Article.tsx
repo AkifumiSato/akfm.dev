@@ -1,5 +1,5 @@
 import type React from "react";
-import styles from "./Article.module.css";
+import styles from "./article.module.css";
 
 type Props = {
   html: string;
