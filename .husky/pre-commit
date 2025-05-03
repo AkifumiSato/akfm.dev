@@ -4,4 +4,4 @@
 pnpm tsc
 pnpm run lint
 pnpm run format:staged
-pnpm test -- --onlyChanged
+pnpm test
