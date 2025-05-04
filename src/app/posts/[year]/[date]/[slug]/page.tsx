@@ -17,11 +17,11 @@ type Post = {
   slug: string;
 };
 
-async function PostPage({ params }: { params: Post }) {
-  const { content, data } = await parsePost(params).catch(() => {
+async function PostPage({ params }: { params: Promise<Post> }) {
+  const { year, date, slug } = await params;
+  const { content, data } = await parsePost({ year, date, slug }).catch(() => {
     notFound();
   });
-  const { year, date } = params;
   const dateTime = `${year}-${date.slice(0, 2)}-${date.slice(2, 4)}`;
 
   return (
@@ -47,9 +47,10 @@ export default PostPage;
 export async function generateMetadata({
   params,
 }: {
-  params: Post;
+  params: Promise<Post>;
 }): Promise<Metadata> {
-  const { data } = await parsePost(params).catch(() => {
+  const { year, date, slug } = await params;
+  const { data } = await parsePost({ year, date, slug }).catch(() => {
     notFound();
   });
   return {
