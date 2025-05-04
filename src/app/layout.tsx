@@ -23,7 +23,7 @@ export default function RootLayout({
       </Head>
       <body className="dark">
         <div className="flex items-center flex-col">
-          <div className="flex flex-col gap-y-10 justify-between min-h-dvh container">
+          <div className="flex flex-col gap-y-10 justify-between min-h-dvh akfm-container">
             <div>{children}</div>
             <footer className="flex items-center h-16">
               <p className="text-sm text-gray-400">

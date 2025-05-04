@@ -4,10 +4,8 @@ import type { ReactNode } from "react";
 function Page() {
   return (
     <main className="flex flex-col gap-y-10">
-      <div className="py-10 border-b border-gray-700 w-auto">
-        <h1 className="bg-gradient-to-br from-[#4b53cf] to-[#cf6363] bg-clip-text text-transparent text-[50px] font-bold w-fit">
-          akfm.dev
-        </h1>
+      <div className="py-15 border-b border-gray-700 w-auto">
+        <h1 className="logo-text text-5xl font-bold w-fit">akfm.dev</h1>
       </div>
       <Section title="Name">
         <p>Akifumi Sato.</p>

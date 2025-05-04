@@ -1,27 +1,53 @@
 @import "tailwindcss";
 
-/* todo: light theme toggle */
-:root {
-  --background-color: #0b0b0b;
-  --header-color: rgba(11, 11, 11, 0.75);
-  --border-color: #2f1010;
-  --title-color: #e8e8e8;
-  --font-color: #dedede;
-  --weak-font-color: #c2c1c1;
-  --link-color: #9da2ff;
-  --logo-blue: #4b53cf;
-  --warn-color: #c4af1a;
-  --logo-gradation: linear-gradient(to bottom right, #4b53cf 0%, #cf6363 100%);
-  --site-title-font-size: 50px;
-  --title-font-size: 40px;
-  --sub-title-font-size: 25px;
-  --small-title-font-size: 20px;
-  --base-font-size: 16px;
+@theme {
+  --color-header: rgba(11, 11, 11, 0.75);
 }
 
-body {
-  color: var(--font-color);
-  background: var(--background-color);
-  font-size: var(--base-font-size);
-  line-height: 2;
+@layer base {
+  body {
+    color: var(--color-gray-300);
+    background: var(--color-gray-950);
+    line-height: 1.5;
+  }
+}
+
+@layer components {
+  .logo-text {
+    @apply bg-gradient-to-br from-[#4b53cf] to-[#cf6363] bg-clip-text text-transparent;
+  }
+  
+  .akfm-container {
+    @apply container;
+  }
+
+  @media (max-width: 1020px) {
+    .akfm-container {
+      @apply px-5;
+    }
+  }
+
+  .article {
+    @apply flex flex-col gap-y-3;
+  }
+
+  .article > h2 {
+    @apply text-2xl font-bold leading-16;
+  }
+
+  .article > h3 {
+    @apply text-xl font-bold leading-12;
+  }
+
+  .article > ul {
+    @apply list-disc list-inside;
+  }
+
+  .article > ol {
+    @apply list-decimal list-inside;
+  }
+
+  .article > pre {
+    @apply overflow-scroll p-5;
+  }
 }

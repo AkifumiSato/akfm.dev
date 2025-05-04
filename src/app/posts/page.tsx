@@ -1,8 +1,7 @@
 import { getAllPostsParams } from "@/lib/server/posts/get-all-posts-params";
 import { matterMarkdown } from "@/lib/server/posts/matter-markdown";
+import Link from "next/link";
 import React from "react";
-import styles from "./common.module.css";
-import PostList from "./post-list";
 
 export const metadata = {
   title: "posts - akfm.dev",
@@ -11,8 +10,23 @@ export const metadata = {
 async function PostsPage() {
   const posts = readAllPosts();
   return (
-    <main className={styles.main}>
-      <PostList title="Posts" posts={posts} />
+    <main>
+      <article className="flex flex-col gap-y-10">
+        <h1 className="text-4xl font-bold">Posts</h1>
+        <ul className="flex flex-col gap-y-5">
+          {posts.map(({ title, path, date }) => (
+            <li key={path}>
+              <Link
+                href={path}
+                className="flex flex-col gap-y-3 border-b border-gray-700 pb-5 transition duration-500 hover:opacity-50"
+              >
+                <time dateTime={date}>{date}</time>
+                <div className="text-xl">{title}</div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </article>
     </main>
   );
 }
