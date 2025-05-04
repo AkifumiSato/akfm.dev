@@ -1,25 +1,35 @@
-import { Section } from "@/components/section";
 import Link from "next/link";
-import React from "react";
-import styles from "./index.module.css";
+import type { ReactNode } from "react";
 
-const Page = () => {
+function Page() {
   return (
-    <main className={styles.main}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>akfm.dev</h1>
+    <main className="flex flex-col gap-y-10">
+      <div className="py-10 border-b border-gray-700 w-auto">
+        <h1 className="bg-gradient-to-br from-[#4b53cf] to-[#cf6363] bg-clip-text text-transparent text-[50px] font-bold w-fit">
+          akfm.dev
+        </h1>
       </div>
-      <Section>
-        <h2>Name</h2>
+      <Section title="Name">
         <p>Akifumi Sato.</p>
       </Section>
-      <Section>
-        <h2>About</h2>
+      <Section title="About">
         <p>Web application developer interested in Rust / Typescript.</p>
       </Section>
-      <Section>
-        <h2>Links</h2>
-        <ul>
+      <Section title="Links">
+        <ul className="list-disc pl-5 underline decoration-solid">
+          <li>
+            <a href="https://zenn.dev/akfm" target="_blank" rel="noreferrer">
+              zenn.dev
+            </a>
+          </li>
+          <li>
+            <Link href="/posts">blog</Link>
+          </li>
+          <li>
+            <a href="https://x.com/akfm_sato" target="_blank" rel="noreferrer">
+              X
+            </a>
+          </li>
           <li>
             <a
               href="https://github.com/AkifumiSato"
@@ -29,23 +39,25 @@ const Page = () => {
               github
             </a>
           </li>
-          <li>
-            <a href="https://zenn.dev/akfm" target="_blank" rel="noreferrer">
-              zenn.dev
-            </a>
-          </li>
-          <li>
-            <a href="https://x.com/akfm_sato" target="_blank" rel="noreferrer">
-              X
-            </a>
-          </li>
-          <li>
-            <Link href="/posts">posts</Link>
-          </li>
         </ul>
       </Section>
     </main>
   );
-};
+}
 
 export default Page;
+
+function Section({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className="flex flex-col gap-y-5">
+      <h2 className="font-bold text-2xl text-gray-500">{title}</h2>
+      <div className="text-ls text-gray-300">{children}</div>
+    </section>
+  );
+}
